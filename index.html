@@ -77,7 +77,11 @@
                 <button type="button" id="editar" onclick="activarEdicion()">Editar</button>
             </div>
 
-
+            <!-- Botones de acción para guardar o cancelar -->
+            <div class="actions" id="botones-edicion" style="display: none;">
+                <button type="button" onclick="conservarCambios()">Guardar</button>
+                <button type="button" onclick="cancelarEdicion()">Cancelar</button>
+            </div>
 
 
         </form>
@@ -85,11 +89,7 @@
 
     </div>
 
-    <!-- Botones de acción para guardar o cancelar -->
-    <div class="actions" id="botones-edicion" style="display: none;">
-        <button onclick="conservarCambios()">Guardar</button>
-        <button onclick="cancelarEdicion()">Cancelar</button>
-    </div>
+
 
 
     <div id="mensaje-confirmacion" class="mensaje-exito">
