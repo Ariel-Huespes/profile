@@ -1,5 +1,5 @@
 body {
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0px;
     background-color: whitesmoke;
@@ -8,20 +8,17 @@ body {
 .container {
     display: flex;
     justify-content: center;
-    /* Centra el formulario horizontalmente */
     align-items: center;
-    /* Centra el formulario verticalmente */
-
-    /* Asegura que el contenedor ocupe toda la altura de la ventana */
     background-color: #f4f4f4;
-    /* Fondo de la página */
+
 
 }
 
 .form {
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
     width: 300px;
 
     display: flex;
@@ -31,6 +28,15 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+
+}
+
+.form h1 {
+    color: #333;
+    font-size: 35px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
 }
 
 
@@ -98,10 +104,6 @@ h1 {
     border-radius: 4px;
 }
 
-.profile-section button:hover {
-    background-color: #0056b3;
-}
-
 .actions {
     display: flex;
     justify-content: center;
@@ -110,17 +112,18 @@ h1 {
 }
 
 .actions button {
-    background-color: #28a745;
+    background-color: black;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    margin: 15px 5px 5px 0px;
+    border-radius: 5px;
+    border: 0;
     cursor: pointer;
 }
 
-.actions button.cancel {
-    background-color: #dc3545;
-}
 
 .actions button:hover {
     opacity: 0.9;
