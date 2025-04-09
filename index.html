@@ -1,51 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
+    <header class="navbar">
+        <div class="logo">
+            <span>S.H.</span>
+            <span>StudyHub</span>
+        </div>
+        <!--Navbar-->
+        <div class="nav-center" id="nav-center">
+            <nav>
+                <a id='menu-option' href="#caracteristicas">Caracteristicas</a>
+                <a id='menu-option' href="">Como funciona</a>
+                <a id='menu-option' href="">Referencias</a>
+            </nav>
+        </div>
+
+        <div class="relleno"></div>
+
+        <div class="burger-menu" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!--Navbar movil-->
+        <nav class="mobilenav" id="mobilenav">
+            <div>
+                <p class="close-menu" id="close-menu">Cerrar</p>
+            </div>
+            <div class="nav-center-mobile" id="mobileMenu">
+                <a id='menu-option-mobile' href="#caracteristicas">Caracteristicas</a>
+                <a id='menu-option-mobile' href="">Como funciona</a>
+                <a id='menu-option-mobile' href="">Referencias</a>
+            </div>
+        </nav>
+    </header>
 
     <div class="container">
-        <h1>Perfil de Usuario</h1>
 
-        <!-- Sección Nombre -->
-        <div class="profile-section">
-            <label for="nombre">Nombre</label>
-            <span id="nombre">Name</span>
-            <button onclick="editar('nombre')">Editar</button>
-        </div>
+        <form class="form">
+            <h1>Profile</h1>
 
-        <!-- Sección Usuario -->
-        <div class="profile-section">
-            <label for="usuario">Usuario</label>
-            <span id="usuario">User</span>
-            <button onclick="editar('usuario')">Editar</button>
-        </div>
+            <!-- Sección Nombre -->
+            <div class="profile-section">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" value="name" disabled>
+            </div>
 
-        <!-- Sección Email -->
-        <div class="profile-section">
-            <label for="email">Email</label>
-            <span id="email">user@correo.com</span>
-            <button onclick="editar('email')">Editar</button>
-        </div>
+            <!-- Sección Usuario -->
+            <div class="profile-section">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" value="user" disabled>
+            </div>
 
-        <!-- Sección Contraseña -->
-        <div class="profile-section">
-            <label for="contraseña">Contraseña</label>
-            <span id="contraseña">********</span>
-            <button onclick="editar('contraseña')">Editar</button>
-        </div>
+            <!-- Sección Email -->
+            <div class="profile-section">
+                <label for="email">Email</label>
+                <input type="text" id="email" value="user@correo.com" disabled>
+            </div>
 
-        <!-- Botones de acción -->
-        <div class="actions">
-            <button id="conservar" onclick="conservarCambios()">Conservar cambios</button>
-            <button id="cancelar" onclick="cancelarEdicion()">Cancelar</button>
-        </div>
+            <!-- Sección Contraseña -->
+            <div class="profile-section">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" id="password" value="12345678" disabled>
+            </div>
+
+            <!-- Boton editar -->
+            <div class="actions">
+                <button type="button" id="editar" onclick="activarEdicion()">Editar</button>
+            </div>
+
+
+
+
+        </form>
+
+
     </div>
 
-    <script src="script.js"></script>
+    <!-- Botones de acción para guardar o cancelar -->
+    <div class="actions" id="botones-edicion" style="display: none;">
+        <button onclick="conservarCambios()">Guardar</button>
+        <button onclick="cancelarEdicion()">Cancelar</button>
+    </div>
+
+
+    <div id="mensaje-confirmacion" class="mensaje-exito">
+        ¡Cambios guardados con éxito!
+    </div>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

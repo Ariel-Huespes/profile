@@ -1,54 +1,84 @@
-function editar(id) {
-    // Obtener el elemento donde se muestra el valor
-    let element = document.getElementById(id);
-    let currentValue = element.innerText || element.textContent;
+let valoresOriginales = {};
 
-    // Crear un campo de entrada para editar
-    let input = document.createElement("input");
-    input.type = (id === "contraseña") ? "password" : "text";  // Usar 'password' para la contraseña
-    input.value = currentValue;
-    element.innerHTML = ''; // Limpiar el contenido actual
-    element.appendChild(input);
+function activarEdicion() {
+    document.getElementById('botones-edicion').style.display = 'flex';
+    document.getElementById('editar').style.display = 'none';
 
-    // Cambiar el texto del botón a "Guardar"
-    let button = element.nextElementSibling;
-    button.innerText = 'Guardar';
-    button.setAttribute('onclick', `guardar('${id}')`);
+    // Guardar los valores originales
+    valoresOriginales = {
+        nombre: document.getElementById('nombre').value,
+        usuario: document.getElementById('usuario').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    };
 
-    // Mostrar los botones de acción
-    document.getElementById("conservar").style.display = "inline-block";
-    document.getElementById("cancelar").style.display = "inline-block";
-}
-
-function guardar(id) {
-    // Obtener el nuevo valor
-    let element = document.getElementById(id);
-    let input = element.querySelector("input");
-    let newValue = input.value;
-
-    // Actualizar el texto con el nuevo valor
-    element.innerHTML = newValue;
-
-    // Cambiar el botón de nuevo a "Editar"
-    let button = element.nextElementSibling;
-    button.innerText = 'Editar';
-    button.setAttribute('onclick', `editar('${id}')`);
-
-    // Esconder los botones de acción después de guardar
-    document.getElementById("conservar").style.display = "none";
-    document.getElementById("cancelar").style.display = "none";
+    // Habilitar inputs
+    document.getElementById('nombre').disabled = false;
+    document.getElementById('usuario').disabled = false;
+    document.getElementById('email').disabled = false;
+    document.getElementById('password').disabled = false;
 }
 
 function conservarCambios() {
-    // Aquí podrías enviar los datos al servidor o hacer cualquier otra acción para guardar los cambios
-    alert("Cambios conservados");
+    document.getElementById('botones-edicion').style.display = 'none';
+    document.getElementById('editar').style.display = 'inline-block';
 
-    // Esconder los botones de acción después de guardar
-    document.getElementById("conservar").style.display = "none";
-    document.getElementById("cancelar").style.display = "none";
+    document.getElementById('nombre').disabled = true;
+    document.getElementById('usuario').disabled = true;
+    document.getElementById('email').disabled = true;
+    document.getElementById('password').disabled = true;
+
+    // Mostrar mensaje de confirmación
+    const mensaje = document.getElementById('mensaje-confirmacion');
+    mensaje.style.display = 'block';
+
+    // Ocultarlo luego de unos segundos
+    setTimeout(() => {
+        mensaje.style.display = 'none';
+    }, 3000);
 }
-
 function cancelarEdicion() {
-    // Recargar la página o restaurar los valores originales
-    location.reload();  // Recarga la página y descarta los cambios realizados
+    document.getElementById('botones-edicion').style.display = 'none';
+    document.getElementById('editar').style.display = 'inline-block';
+
+    // Restaurar los valores originales
+    document.getElementById('nombre').value = valoresOriginales.nombre;
+    document.getElementById('usuario').value = valoresOriginales.usuario;
+    document.getElementById('email').value = valoresOriginales.email;
+    document.getElementById('password').value = valoresOriginales.password;
+
+    // Deshabilitar inputs
+    document.getElementById('nombre').disabled = true;
+    document.getElementById('usuario').disabled = true;
+    document.getElementById('email').disabled = true;
+    document.getElementById('password').disabled = true;
 }
+
+
+//
+
+
+const navcenter = document.getElementById("nav-center")
+const navcentermobile = document.getElementById("nav-center-mobile")
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobilenav');
+const closeButton = document.getElementById('close-menu')
+const options = document.querySelectorAll('#menu-option-mobile')
+
+console.log(options)
+burger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    closeButton.classList.toggle('active');
+});
+
+closeButton.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    closeButton.classList.remove('active')
+})
+
+options.forEach((option) => {
+    option.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        closeButton.classList.remove('active')
+    })
+})
